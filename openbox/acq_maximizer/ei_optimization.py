@@ -682,14 +682,16 @@ class RandomScipyOptimizer(AcquisitionFunctionMaximizer):
             num_trials=10,
             **kwargs
     ) -> List[Tuple[float, Configuration]]:
+        assert num_trials >= 3
         acq_configs = []
 
         initial_configs = self.random_search.maximize(runhistory, num_points, **kwargs).challengers
         initial_acqs = self.acquisition_function(initial_configs)
         acq_configs.extend(zip(initial_acqs, initial_configs))
 
+        scipy_initial_configs = [initial_configs[0]] + self.config_space.sample_configuration(num_trials - 1)
         success_count = 0
-        for config in initial_configs[:num_trials]:
+        for config in scipy_initial_configs:
             scipy_configs = self.scipy_optimizer.maximize(runhistory, initial_config=config).challengers
             if not scipy_configs:   # empty
                 continue
