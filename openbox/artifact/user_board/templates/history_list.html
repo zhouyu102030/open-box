@@ -153,6 +153,9 @@
 
                     parallel_coordinates_option['parallelAxis'] = parallel_parallelAxis;
                     parallel_coordinates_option['series'][0]['data'] = parallel_option['data'];
+                    parallel_coordinates_option['visualMap']['min'] = parallel_option['visualMap']['min'];
+                    parallel_coordinates_option['visualMap']['max'] = parallel_option['visualMap']['max'];
+                    parallel_coordinates_option['visualMap']['dimension'] = parallel_option['visualMap']['dimension'];
                     line_option['series'][0]['data'] =  data['line_data']['min'];
                     line_option['series'][1]['data'] =  data['line_data']['over'];
                     line_option['series'][2]['data'] =  data['line_data']['scat'];
@@ -183,19 +186,16 @@
     var lineStyle = {
         normal: {
             width: 1,
-            opacity: 0.5
+            opacity: 0.75
         }
     };
 
     parallel_coordinates_option = {
         visualMap: {
         show: true,
-        min: -3,
-        max: 3,
-        dimension: 2,
-         seriesIndex: 0,
+        seriesIndex: 0,
         inRange: {
-            color: ['#d94e5d','#eac736','#50a3ba'].reverse(),
+            color: ['#d94e5d','#eac736','#50a3ba'],
         }
     },
 
@@ -203,6 +203,8 @@
             {
                 type: 'parallel',
                 lineStyle: lineStyle,
+                inactiveOpacity: 0.1,
+                activeOpacity: 1,
                 data: ''
             },
 

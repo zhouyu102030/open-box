@@ -42,3 +42,4 @@ conf/*
 !conf/template/
 
 openbox/artifact/db.sqlite3
+nohup.out

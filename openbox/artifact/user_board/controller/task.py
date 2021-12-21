@@ -1,6 +1,7 @@
 # License: MIT
 
 import sys
+import numpy as np
 
 from bson import ObjectId
 from django.http import JsonResponse
@@ -81,7 +82,8 @@ def history(request, task_id):
         run_history_list = [x for x in run_history.find_many({'task_id': task_id})]
         table_list = []
         rh_config = {}
-        option, option['data'] = {}, []
+        option = {'data': [], 'visualMap': {}}
+        perf_list = []
 
         for rh in run_history_list:
             result = round(rh['result'][0], 4)
@@ -93,22 +95,32 @@ def history(request, task_id):
             table_list.append(
                 [str(rh['_id']), result, config_str, rh['status'], rh['trial_info'], rh['worker_id'], rh['cost']])
             rh_config[str(rh['_id'])] = rh['config']
-            option['data'].append([rh['config']['x1'], rh['config']['x2'], result])
+            data = []
+            for parameter in rh['config'].keys():
+                data.append(rh['config'][parameter])
+            data.append(result)
+            option['data'].append(data)
+            perf_list.append(result)
 
-        option['schema'] = ['x1', 'x2', 'perf']
+        if len(run_history_list) > 0:
+            option['schema'] = list(run_history_list[0]['config'].keys()) + ['perf']
+            option['visualMap']['min'] = np.percentile(perf_list, 0)
+            option['visualMap']['max'] = np.percentile(perf_list, 90)
+            option['visualMap']['dimension'] = len(option['schema']) - 1
+        else:
+            option['visualMap']['min'] = 0
+            option['visualMap']['max'] = 100
+            option['visualMap']['dimension'] = 0
 
-        # line_data = {'min': [], 'over': []}
-        line_data = {'min': [], 'over': [],'scat':[]}
+        line_data = {'min': [], 'over': [], 'scat': []}
         min_value = sys.maxsize
-        n = len(option['data']) - 1
-        for idx in range(n, -1, -1):
-            if option['data'][idx][2] <= min_value:
-                min_value = option['data'][idx][2]
-                line_data['min'].append([n - idx, option['data'][idx][2]])
-                line_data['scat'].append([n - idx, option['data'][idx][2]])
+        for idx, perf in enumerate(perf_list):
+            if perf <= min_value:
+                min_value = perf
+                line_data['min'].append([idx, perf])
+                line_data['scat'].append([idx, perf])
             else:
-                line_data['over'].append([n - idx, option['data'][idx][2]])
-            # line_data['over'].append([n - idx, option['data'][idx][2]])
-        line_data['min'].append([n + 1, min_value])
+                line_data['over'].append([idx, perf])
+        line_data['min'].append([len(option['data']), min_value])
         return JsonResponse(
             {'code': 1, 'option': option, 'table_list': table_list, 'rh_config': rh_config, 'line_data': line_data})

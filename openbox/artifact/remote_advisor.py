@@ -16,9 +16,9 @@ class RemoteAdvisor(object):
                  num_constraints=0,
                  num_objs=1,
                  sample_strategy: str = 'bo',
-                 surrogate_type='auto',
-                 acq_type='auto',
-                 acq_optimizer_type='auto',
+                 surrogate_type=None,
+                 acq_type=None,
+                 acq_optimizer_type='local_random',
                  max_runs=200,
                  init_strategy='random_explore_first',
                  initial_configurations=None,
@@ -68,8 +68,8 @@ class RemoteAdvisor(object):
                                   'config_space_json': config_space_json,
                                   'num_constraints': num_constraints, 'num_objs': num_objs,
                                   'max_runs': self.max_iterations,
-                                  'options': json.dumps(options), time_limit_per_trial: time_limit_per_trial,
-                                  active_worker_num: active_worker_num, parallel_type: parallel_type})
+                                  'options': json.dumps(options), 'time_limit_per_trial': time_limit_per_trial,
+                                  'active_worker_num': active_worker_num, 'parallel_type': parallel_type})
         res = json.loads(res.text)
 
         if res['code'] == 1:
