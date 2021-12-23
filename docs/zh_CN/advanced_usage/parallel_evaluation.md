@@ -64,15 +64,16 @@ opt = ParallelOptimizer(
     max_runs=50,
     surrogate_type='gp',
     time_limit_per_trial=180,
-    task_id='parallel_sync',
+    task_id='parallel_async',
 )
 history = opt.run()
 ```
 
 除了被传递给 **ParallelOptimizer** 的 **目标函数** 和 **搜索空间**，其它的参数有：
 
-+ **parallel_strategy='async' / 'sync'** 设置并行验证是同步的还是异步的。
-我们推荐使用 **'async'** 因为它能更充分地利用资源，并比 **'sync'** 实现了更好的性能。
++ **parallel_strategy='async' / 'sync'** 设置并行验证是异步的还是同步的。
+我们推荐使用 **'async'** 异步并行方式，因为它能更充分地利用资源，减少空闲。 
+实验表明异步并行相比 **'sync'** 同步并行达到了更好的性能。
 
 + **batch_size=4** 设置并行worker的数量。
 

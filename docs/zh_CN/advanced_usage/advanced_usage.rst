@@ -5,5 +5,5 @@
 ..  toctree::
     :maxdepth: 1
 
-    并行评估 <parallel_evaluation>
+    并行和分布式验证 <parallel_evaluation>
     迁移学习 <transfer_learning>
