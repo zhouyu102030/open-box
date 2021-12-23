@@ -125,7 +125,7 @@ history.visualize_jupyter()
 ```
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/visualize_jupyter_branin.png" width="90%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/visualize_jupyter_branin.png" width="90%">
 </p>
 
 调用 <font color=#FF0000>**print(history.get_importance())**</font> 来输出参数的重要性：

@@ -166,7 +166,7 @@ history.visualize_jupyter()
 ```
 
 <center class="half">
-  <img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_branin.png" width="350"/><img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/visualize_jupyter_branin.png" width="250"/>
+  <img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_branin.png" width="350"/><img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/visualize_jupyter_branin.png" width="250"/>
 </center>
 
 #### LightGBM模型超参数优化
@@ -297,7 +297,7 @@ history.visualize_jupyter()
 ```
 
 <center class="half">
-  <img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/plot_convergence_hpo.png" width="300"/><img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/visualize_jupyter_hpo.png" width="300"/>
+  <img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_hpo.png" width="300"/><img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/visualize_jupyter_hpo.png" width="300"/>
 </center>
 上面左图为模型最优错误率随验证次数变化曲线，右图为反映优化历史中超参数与结果关系的HiPlot可视化图表。
 
@@ -331,21 +331,21 @@ OpenBox系统对于黑盒优化问题有着优异的表现，我们在多种任�
 
 Ackley-4d | Hartmann-6d 
 :-: | :-:
-![](https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/so_math_ackley-4.png) | ![](https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/so_math_hartmann.png)
+![](https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/so_math_ackley-4.png) | ![](https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/so_math_hartmann.png)
 
 下图为各系统在25个数据集上，对LightGBM模型进行超参数优化后的排名：
 
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/ranking_lgb_7.svg" style="zoom:30%;" />
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/ranking_lgb_7.svg" style="zoom:30%;" />
 
 此外，我们对比了OpenBox与Google Vizier系统迁移学习算法的性能。实验中，我们给定25个数据集以及在各数据集上单独调参的历史数据信息，每次选择一个数据集，迁移学习算法使用其余24个数据集的历史信息，在该数据集上对模型调参。平均性能排名曲线如下（其中SMAC3为没有使用迁移学习的基准算法）：
 
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/tl_lightgbm_75_rank_result.svg" style="zoom:45%;" />
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/tl_lightgbm_75_rank_result.svg" style="zoom:45%;" />
 
 在各项实验中，OpenBox系统性能均超过了现有系统。
 
 ## 总结
 
-本文介绍了黑盒优化问题，以及我们的开源黑盒优化系统OpenBox（项目地址：<https://github.com/thomas-young-2013/open-box>），欢迎更多开发者参与我们的开源项目。
+本文介绍了黑盒优化问题，以及我们的开源黑盒优化系统OpenBox（项目地址：<https://github.com/PKU-DAIR/open-box>），欢迎更多开发者参与我们的开源项目。
 
 在后续文章中，我们将继续介绍OpenBox系统在更多场景下的使用方法，包括服务部署与使用、并行验证、多精度优化等，敬请期待。
 

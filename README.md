@@ -7,9 +7,9 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/PKU-DAIR/open-box/blob/master/LICENSE)
 [![Build Status](https://api.travis-ci.org/thomas-young-2013/open-box.svg?branch=master)](https://api.travis-ci.org/thomas-young-2013)
 [![Issues](https://img.shields.io/github/issues-raw/PKU-DAIR/open-box.svg)](https://github.com/PKU-DAIR/open-box/issues?q=is%3Aissue+is%3Aopen)
-[![Bugs](https://img.shields.io/github/issues/PKU-DAIR/open-box/bug.svg)](https://github.com/thomas-young-2013/open-box/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
-[![Pull Requests](https://img.shields.io/github/issues-pr-raw/thomas-young-2013/open-box.svg)](https://github.com/thomas-young-2013/open-box/pulls?q=is%3Apr+is%3Aopen)
-[![Version](https://img.shields.io/github/release/thomas-young-2013/open-box.svg)](https://github.com/thomas-young-2013/open-box/releases)
+[![Bugs](https://img.shields.io/github/issues/PKU-DAIR/open-box/bug.svg)](https://github.com/PKU-DAIR/open-box/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+[![Pull Requests](https://img.shields.io/github/issues-pr-raw/PKU-DAIR/open-box.svg)](https://github.com/PKU-DAIR/open-box/pulls?q=is%3Apr+is%3Aopen)
+[![Version](https://img.shields.io/github/release/thomas-young-2013/open-box.svg)](https://github.com/PKU-DAIR/open-box/releases)
 [![Join the chat at https://gitter.im/bbo-open-box](https://badges.gitter.im/bbo-open-box.svg)](https://gitter.im/bbo-open-box?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Documentation Status](https://readthedocs.org/projects/open-box/badge/?version=latest)](https://open-box.readthedocs.io/en/latest/?badge=latest)
 
@@ -40,7 +40,7 @@ The design of OpenBox follows the following principles:
 
 ## Links
 + [Documentations](https://open-box.readthedocs.io/en/latest/?badge=latest) | [中文文档](https://open-box.readthedocs.io/zh_CN/latest/)
-+ [Examples](https://github.com/thomas-young-2013/open-box/tree/master/examples)
++ [Examples](https://github.com/PKU-DAIR/open-box/tree/master/examples)
 + [Pypi package](https://pypi.org/project/openbox/)
 + Conda package: [to appear soon]()
 + Blog post: [to appear soon]()
@@ -160,7 +160,7 @@ To install the newest OpenBox package, just type the following scripts on the co
 (Python >= 3.7 only. For Python == 3.6, please see our [Installation Guide Document](https://open-box.readthedocs.io/en/latest/installation/installation_guide.html))
 
 ```bash
-git clone https://github.com/thomas-young-2013/open-box.git && cd open-box
+git clone https://github.com/PKU-DAIR/open-box.git && cd open-box
 cat requirements/main.txt | xargs -n 1 -L 1 pip install
 python setup.py install --user --prefix=
 ```
@@ -221,13 +221,13 @@ if __name__ == "__main__":
 ```
 
 **More Examples**:
-+ [Single-Objective with Constraints](https://github.com/thomas-young-2013/open-box/blob/master/examples/optimize_problem_with_constraint.py)
-+ [Multi-Objective](https://github.com/thomas-young-2013/open-box/blob/master/examples/optimize_multi_objective.py)
-+ [Multi-Objective with Constraints](https://github.com/thomas-young-2013/open-box/blob/master/examples/optimize_multi_objective_with_constraint.py)
-+ [Parallel Evaluation on Local](https://github.com/thomas-young-2013/open-box/blob/master/examples/evaluate_async_parallel_optimization.py)
-+ [Distributed Evaluation](https://github.com/thomas-young-2013/open-box/blob/master/examples/distributed_optimization.py)
-+ [Tuning LightGBM](https://github.com/thomas-young-2013/open-box/blob/master/examples/tuning_lightgbm.py)
-+ [Tuning XGBoost](https://github.com/thomas-young-2013/open-box/blob/master/examples/tuning_xgboost.py)
++ [Single-Objective with Constraints](https://github.com/PKU-DAIR/open-box/blob/master/examples/optimize_problem_with_constraint.py)
++ [Multi-Objective](https://github.com/PKU-DAIR/open-box/blob/master/examples/optimize_multi_objective.py)
++ [Multi-Objective with Constraints](https://github.com/PKU-DAIR/open-box/blob/master/examples/optimize_multi_objective_with_constraint.py)
++ [Parallel Evaluation on Local](https://github.com/PKU-DAIR/open-box/blob/master/examples/evaluate_async_parallel_optimization.py)
++ [Distributed Evaluation](https://github.com/PKU-DAIR/open-box/blob/master/examples/distributed_optimization.py)
++ [Tuning LightGBM](https://github.com/PKU-DAIR/open-box/blob/master/examples/tuning_lightgbm.py)
++ [Tuning XGBoost](https://github.com/PKU-DAIR/open-box/blob/master/examples/tuning_xgboost.py)
 
 ## **Enterprise Users**
 <p align="left">
@@ -244,19 +244,19 @@ if __name__ == "__main__":
 
 
 ## **Releases and Contributing**
-OpenBox has a frequent release cycle. Please let us know if you encounter a bug by [filling an issue](https://github.com/thomas-young-2013/open-box/issues/new/choose).
+OpenBox has a frequent release cycle. Please let us know if you encounter a bug by [filling an issue](https://github.com/PKU-DAIR/open-box/issues/new/choose).
 
 We appreciate all contributions. If you are planning to contribute any bug-fixes, please do so without further discussions.
 
 If you plan to contribute new features, new modules, etc. please first open an issue or reuse an existing issue, and discuss the feature with us.
 
-To learn more about making a contribution to OpenBox, please refer to our [How-to contribution page](https://github.com/thomas-young-2013/open-box/blob/master/CONTRIBUTING.md). 
+To learn more about making a contribution to OpenBox, please refer to our [How-to contribution page](https://github.com/PKU-DAIR/open-box/blob/master/CONTRIBUTING.md). 
 
 We appreciate all contributions and thank all the contributors!
 
 
 ## **Feedback**
-* [File an issue](https://github.com/thomas-young-2013/open-box/issues) on GitHub.
+* [File an issue](https://github.com/PKU-DAIR/open-box/issues) on GitHub.
 * Email us via *liyang.cs@pku.edu.cn*.
 
 

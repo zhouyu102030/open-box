@@ -173,7 +173,7 @@ history.visualize_jupyter()
 ```
 
 <center class="half">
-  <img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_branin.png" width="350"/><img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/visualize_jupyter_branin.png" width="250"/>
+  <img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_branin.png" width="350"/><img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/visualize_jupyter_branin.png" width="250"/>
 </center>
 
 #### Tuning Hyperparameters of LightGBM
@@ -304,7 +304,7 @@ history.visualize_jupyter()
 ```
 
 <center class="half">
-  <img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/plot_convergence_hpo.png" width="300"/><img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/visualize_jupyter_hpo.png" width="300"/>
+  <img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_hpo.png" width="300"/><img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/visualize_jupyter_hpo.png" width="300"/>
 </center>
 The left figure shows the best observed objective during the optimization while the right figure reflects the relationships between each hyperparameter and the objective.
 
@@ -338,21 +338,21 @@ The following figures show the optimality gap of each system over evaluation tri
 
 |            Ackley-4d             |           Hartmann-6d            |
 | :------------------------------: | :------------------------------: |
-| ![](https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/so_math_ackley-4.png) | ![](https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/so_math_hartmann.png) |
+| ![](https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/so_math_ackley-4.png) | ![](https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/so_math_hartmann.png) |
 
 We plot the ranks of tuning LightGBM on 25 datasets as follows:
 
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/ranking_lgb_7.svg" style="zoom:30%;" />
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/ranking_lgb_7.svg" style="zoom:30%;" />
 
 In addition, we compare our transfer learning algorithm with Google Vizier. Before the experiment, we prepare 25 datasets and the corresponding tuning history on each dataset. The experiment is conducted in a ''leave-one-out'' fashion, which means we tune on one dataset again while using the history of the remaining 24 datasets. The average ranks over evaluation trials are as follows: (SMAC3 is the baseline without using transfer learning)
 
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/tl_lightgbm_75_rank_result.svg" style="zoom:45%;" />
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/tl_lightgbm_75_rank_result.svg" style="zoom:45%;" />
 
 We can have that, OpenBox outperforms the existing black-box optimization systems.
 
 ## Summary
 
-In this article, we introduced the black-box optimization problem and our open source black-box optimization system [OpenBox](<https://github.com/thomas-young-2013/open-box>). We are actively accepting code contributions to the OpenBox project.
+In this article, we introduced the black-box optimization problem and our open source black-box optimization system [OpenBox](<https://github.com/PKU-DAIR/open-box>). We are actively accepting code contributions to the OpenBox project.
 
 In the future, we will continue to introduce more usages of OpenBox, including the deployment of online service, parallel evaluation, multi-fidelity optimization, etc.
 

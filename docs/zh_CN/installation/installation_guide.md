@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
 ## 5 疑难解答
 
-如果以下未能解决您的安装问题, 请在Github上[提交issue](https://github.com/thomas-young-2013/open-box/issues) 
+如果以下未能解决您的安装问题, 请在Github上[提交issue](https://github.com/PKU-DAIR/open-box/issues) 
 或发送邮件至*liyang.cs@pku.edu.cn*.
 
 ### Windows

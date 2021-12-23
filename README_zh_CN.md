@@ -8,10 +8,10 @@
 [![Build Status](https://api.travis-ci.org/thomas-young-2013/open-box.svg?branch=master)](https://api.travis-ci.org/thomas-young-2013)
 [![Issues](https://img.shields.io/github/issues-raw/PKU-DAIR/open-box.svg)](https://github.com/PKU-DAIR/open-box/issues?q=is%3Aissue+is%3Aopen)
 [![Bugs](https://img.shields.io/github/issues/PKU-DAIR/open-box/bug.svg)](https://github.com/PKU-DAIR/open-box/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
-[![Pull Requests](https://img.shields.io/github/issues-pr-raw/thomas-young-2013/open-box.svg)](https://github.com/thomas-young-2013/open-box/pulls?q=is%3Apr+is%3Aopen)
-[![Version](https://img.shields.io/github/release/thomas-young-2013/open-box.svg)](https://github.com/thomas-young-2013/open-box/releases)
+[![Pull Requests](https://img.shields.io/github/issues-pr-raw/PKU-DAIR/open-box.svg)](https://github.com/PKU-DAIR/open-box/pulls?q=is%3Apr+is%3Aopen)
+[![Version](https://img.shields.io/github/release/thomas-young-2013/open-box.svg)](https://github.com/PKU-DAIR/open-box/releases)
 [![Join the chat at https://gitter.im/bbo-open-box](https://badges.gitter.im/bbo-open-box.svg)](https://gitter.im/bbo-open-box?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Documentation Status](https://readthedocs.org/projects/open-box-zh_CN/badge/?version=latest)](https://open-box.readthedocs.io/zh_CN/latest/index.html)
+[![Documentation Status](https://readthedocs.org/projects/open-box-zh-cn/badge/?version=latest)](https://open-box.readthedocs.io/zh_CN/latest/index.html)
 
 
 ## OpenBox: 通用高效的黑盒优化系统
@@ -44,15 +44,15 @@ OpenBox是一个提供通用黑盒优化服务的系统。用户可以使用REST
 + 错误容忍、系统可扩展性、数据隐私保护。
 
 ## Links
-+ [使用代码样例](https://github.com/thomas-young-2013/open-box/tree/master/examples)
++ [使用代码样例](https://github.com/PKU-DAIR/open-box/tree/master/examples)
 + [文档](https://open-box.readthedocs.io/zh_CN/latest/index.html)
 + [Pypi包](https://pypi.org/project/openbox/)
 + Conda包: [to appear soon]()
 + 博客: [to appear soon]()
 
 ## 应用教程
-+ [使用OpenBox对LightGBM调参](https://github.com/thomas-young-2013/open-box/blob/master/docs/zh_CN/articles/openbox_LightGBM.md) 
-+ [使用OpenBox对XGBoost调参](https://github.com/thomas-young-2013/open-box/blob/master/docs/zh_CN/articles/openbox_XGBoost.md)
++ [使用OpenBox对LightGBM调参](https://github.com/PKU-DAIR/open-box/blob/master/docs/zh_CN/articles/openbox_LightGBM.md) 
++ [使用OpenBox对XGBoost调参](https://github.com/PKU-DAIR/open-box/blob/master/docs/zh_CN/articles/openbox_XGBoost.md)
 
 ## 性能实验结果
 
@@ -118,7 +118,7 @@ pip install openbox
 （以下命令仅适用于Python >= 3.7，对于Python == 3.6，请参考[安装文档](https://open-box.readthedocs.io/zh_CN/latest/installation/installation_guide.html) ）
 
 ```bash
-git clone https://github.com/thomas-young-2013/open-box.git && cd open-box
+git clone https://github.com/PKU-DAIR/open-box.git && cd open-box
 cat requirements/main.txt | xargs -n 1 -L 1 pip install
 python setup.py install --user --prefix=
 ```
@@ -179,13 +179,13 @@ if __name__ == "__main__":
 ```
 
 更多示例：
-+ [单目标带约束优化](https://github.com/thomas-young-2013/open-box/blob/master/examples/optimize_problem_with_constraint.py)
-+ [多目标优化](https://github.com/thomas-young-2013/open-box/blob/master/examples/optimize_multi_objective.py)
-+ [多目标带约束优化](https://github.com/thomas-young-2013/open-box/blob/master/examples/optimize_multi_objective_with_constraint.py)
-+ [单机并行验证](https://github.com/thomas-young-2013/open-box/blob/master/examples/evaluate_async_parallel_optimization.py)
-+ [分布式并行验证](https://github.com/thomas-young-2013/open-box/blob/master/examples/distributed_optimization.py)
-+ [LightGBM调参](https://github.com/thomas-young-2013/open-box/blob/master/examples/tuning_lightgbm.py)
-+ [XGBoost调参](https://github.com/thomas-young-2013/open-box/blob/master/examples/tuning_xgboost.py)
++ [单目标带约束优化](https://github.com/PKU-DAIR/open-box/blob/master/examples/optimize_problem_with_constraint.py)
++ [多目标优化](https://github.com/PKU-DAIR/open-box/blob/master/examples/optimize_multi_objective.py)
++ [多目标带约束优化](https://github.com/PKU-DAIR/open-box/blob/master/examples/optimize_multi_objective_with_constraint.py)
++ [单机并行验证](https://github.com/PKU-DAIR/open-box/blob/master/examples/evaluate_async_parallel_optimization.py)
++ [分布式并行验证](https://github.com/PKU-DAIR/open-box/blob/master/examples/distributed_optimization.py)
++ [LightGBM调参](https://github.com/PKU-DAIR/open-box/blob/master/examples/tuning_lightgbm.py)
++ [XGBoost调参](https://github.com/PKU-DAIR/open-box/blob/master/examples/tuning_xgboost.py)
 
 
 ## **企业用户**
@@ -203,17 +203,17 @@ if __name__ == "__main__":
 
 
 ## **参与贡献**
-如果您在使用OpenBox的过程中遇到Bug，请向我们[提交issue](https://github.com/thomas-young-2013/open-box/issues/new/choose)。如果您对Bug进行了修复，欢迎直接向我们提交。
+如果您在使用OpenBox的过程中遇到Bug，请向我们[提交issue](https://github.com/PKU-DAIR/open-box/issues/new/choose)。如果您对Bug进行了修复，欢迎直接向我们提交。
 
 如果您想要为OpenBox添加新功能、新模块等，请先开放issue，我们会与您讨论。
 
-如果您想更好地了解如何参与项目贡献，请参考[如何参与贡献](https://github.com/thomas-young-2013/open-box/blob/master/CONTRIBUTING.md)页面。
+如果您想更好地了解如何参与项目贡献，请参考[如何参与贡献](https://github.com/PKU-DAIR/open-box/blob/master/CONTRIBUTING.md)页面。
 
 我们在此感谢所有项目贡献者！
 
 
 ## **反馈**
-* 在GitHub上[提交issue](https://github.com/thomas-young-2013/open-box/issues)。
+* 在GitHub上[提交issue](https://github.com/PKU-DAIR/open-box/issues)。
 * 通过邮箱联系我们：*liyang.cs@pku.edu.cn*
 
 
@@ -221,7 +221,7 @@ if __name__ == "__main__":
 
 以开放性和推进AutoML生态系统为目标，我们还发布了一些其他的开源项目：
 
-* [MindWare](https://github.com/thomas-young-2013/mindware) : 提供端到端机器学习模型训练和预测功能的开源系统。
+* [MindWare](https://github.com/PKU-DAIR/mindware) : 提供端到端机器学习模型训练和预测功能的开源系统。
 
 
 ---------------------
