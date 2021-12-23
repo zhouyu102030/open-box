@@ -21,9 +21,9 @@ class MCAdvisor(Advisor):
                  init_strategy='random_explore_first',
                  history_bo_data=None,
                  optimization_strategy='bo',
-                 surrogate_type=None,
-                 acq_type=None,
-                 acq_optimizer_type='batchmc',
+                 surrogate_type='auto',
+                 acq_type='auto',
+                 acq_optimizer_type='auto',
                  use_trust_region=False,
                  ref_point=None,
                  output_dir='logs',
@@ -53,6 +53,39 @@ class MCAdvisor(Advisor):
         if self.use_trust_region:
             self.history_container = MultiStartHistoryContainer(task_id, self.num_objs, self.num_constraints, ref_point)
 
+    def algo_auto_selection(self):
+        info_str = ''
+
+        if self.surrogate_type == 'auto':
+            self.surrogate_type = 'gp'
+            info_str += ' surrogate_type: %s.' % self.surrogate_type
+
+        if self.acq_type == 'auto':
+            if self.num_objs == 1:  # single objective
+                if self.num_constraints == 0:
+                    self.acq_type = 'mcei'
+                else:  # with constraints
+                    self.acq_type = 'mceic'
+            elif self.num_objs <= 4:  # multi objective (<=4)
+                if self.num_constraints == 0:
+                    self.acq_type = 'mcehvi'
+                else:  # with constraints
+                    self.acq_type = 'mcehvic'
+            else:  # multi objective (>4)
+                if self.num_constraints == 0:
+                    self.acq_type = 'mcparego'
+                else:  # with constraints
+                    self.acq_type = 'mcparegoc'
+            info_str += ' acq_type: %s.' % self.acq_type
+
+        if self.acq_optimizer_type == 'auto':
+            self.acq_optimizer_type = 'batchmc'
+            info_str += ' acq_optimizer_type: %s.' % self.acq_optimizer_type
+
+        if info_str != '':
+            info_str = '=== [BO auto selection] ===' + info_str
+            self.logger.info(info_str)
+
     def check_setup(self):
         """
             check num_objs, num_constraints, acq_type, surrogate_type
@@ -63,28 +96,21 @@ class MCAdvisor(Advisor):
         if self.surrogate_type is None:
             self.surrogate_type = 'gp'
         assert self.surrogate_type in ['gp', ]  # MC sample method
-        self.constraint_surrogate_type = 'gp'
+        if self.constraint_surrogate_type is None:
+            self.constraint_surrogate_type = 'gp'
 
         # Single objective
         if self.num_objs == 1:
             if self.num_constraints == 0:
-                if self.acq_type is None:
-                    self.acq_type = 'mcei'
                 assert self.acq_type in ['mcei']
             else:
-                if self.acq_type is None:
-                    self.acq_type = 'mceic'
                 assert self.acq_type in ['mceic'] or self.use_trust_region
 
         # Multi objective
         else:
             if self.num_constraints == 0:
-                if self.acq_type is None:
-                    self.acq_type = 'mcehvi'
                 assert self.acq_type in ['mcparego', 'mcehvi']
             else:
-                if self.acq_type is None:
-                    self.acq_type = 'mcehvic'
                 assert self.acq_type in ['mcparegoc', 'mcehvic'] or self.use_trust_region
 
             # Check reference point is provided for EHVI methods
