@@ -3,7 +3,7 @@
 The design of **OpenBox** follows the paradigm of providing “BBO as a service”.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/sys_framework.svg" width="90%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/sys_framework.svg" width="90%">
 </p>
 
 <center>Architecture of OpenBox.</center>

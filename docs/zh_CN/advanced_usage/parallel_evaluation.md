@@ -7,7 +7,7 @@
 我们考虑了两种并行机制：
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/parallel_bo.svg" width="90%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/parallel_bo.svg" width="90%">
 </p>
 
 1) **同步并行（左）**：每个worker从推荐配置中选择一个配置进行验证。直到所有worker都完成这一轮的验证后再开始下一轮验证。

@@ -57,7 +57,7 @@ setup(
     description="Efficient and generalized blackbox optimization (BBO) system",
     long_description=readme(),
     long_description_content_type="text/markdown",
-    url='https://github.com/thomas-young-2013/open-box',
+    url='https://github.com/PKU-DAIR/open-box',
     author="Thomas (Yang) Li from DAIR Lab@PKU",
     packages=find_packages(),
     license="MIT",

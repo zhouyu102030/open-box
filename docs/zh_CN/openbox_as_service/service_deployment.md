@@ -19,7 +19,7 @@
 接下来，将OpenBox的源代码clone到本地。命令如下：
 
 ```bash
-git clone https://github.com/thomas-young-2013/open-box.git
+git clone https://github.com/PKU-DAIR/open-box.git
 cd open-box
 python setup.py install
 ```

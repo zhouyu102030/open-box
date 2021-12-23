@@ -40,7 +40,7 @@ Its design satisfies the following desiderata:
 The figure below shows the high-level architecture of OpenBox service.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/sys_framework.svg" width="90%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/sys_framework.svg" width="90%">
 </p>
 
 ## Main Components
@@ -60,7 +60,7 @@ The figure below shows the high-level architecture of OpenBox service.
 
 ### Standalone Python package
 Like other open-source packages, OpenBox has a frequent release cycle. Users can install the package via Pypi or
-source code on [GitHub](https://github.com/thomas-young-2013/open-box). For more installation details, refer to [Installation Guide](../installation/installation_guide.md).
+source code on [GitHub](https://github.com/PKU-DAIR/open-box). For more installation details, refer to [Installation Guide](../installation/installation_guide.md).
 
 ### Distributed BBO service
 We adopt the "BBO as a service" paradigm and implement OpenBox as a managed general service for black-box optimization.
@@ -75,6 +75,6 @@ The performance rank (the lower, the better) is shown in the following figure.
 For dataset information and more experimental results, please refer to our [published article](https://arxiv.org/abs/2106.00421).
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/ranking_lgb_7.svg" width="80%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/ranking_lgb_7.svg" width="80%">
 </p>
 

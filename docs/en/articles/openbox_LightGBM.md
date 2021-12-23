@@ -1,14 +1,14 @@
 # Tuning LightGBM with OpenBox -- An Open Source Black-box Optimization System
 
 <center class="half">
-  <img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/logo.png" width="300"/><img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/tuning/LightGBM_logo_black_text.svg" width="300"/>
+  <img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/logo.png" width="300"/><img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/tuning/LightGBM_logo_black_text.svg" width="300"/>
 </center>
 
 ## Introduction
 
 In this article, we will introduce how to tune LightGBM with OpenBox.
 
-[OpenBox](https://github.com/thomas-young-2013/open-box) is an open-source system designed for efficient black-box optimization using Bayesian optimization. OpenBox shows excellent performance on hyperparameter tuning, which is a typical scenario of black-box optimization.
+[OpenBox](https://github.com/PKU-DAIR/open-box) is an open-source system designed for efficient black-box optimization using Bayesian optimization. OpenBox shows excellent performance on hyperparameter tuning, which is a typical scenario of black-box optimization.
 
 OpenBox has a wide range of usages, including black-optimization with a different number of objectives and constraints, transfer learning, parallel evaluations, multi-fidelity optimization, etc. In addition to local installation, OpenBox provides an online service. The users can monitor and manage the optimization process through web pages and deploy their optimization services privately. In the following, we will introduce how to tune LightGBM locally using OpenBox.
 
@@ -132,7 +132,7 @@ history.visualize_jupyter()
 ```
 
 <center class="half">
-  <img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/plot_convergence_hpo.png" width="300"/><img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/visualize_jupyter_hpo.png" width="300"/>
+  <img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_hpo.png" width="300"/><img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/visualize_jupyter_hpo.png" width="300"/>
 </center>
 
 
@@ -164,7 +164,7 @@ In addition, OpenBox supports defining a task using a JSON file. For more charac
 
 In this section, we compare Openbox with other popular hyperparameter optimization systems (or black-box optimization systems). We plot the ranks of tuning LightGBM on 25 datasets as follows:
 
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/ranking_lgb_7.svg" style="zoom:30%;" />
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/ranking_lgb_7.svg" style="zoom:30%;" />
 
 We can have that, Openbox outperforms all the baselines on tuning LightGBM.
 
@@ -174,5 +174,5 @@ In this article, we introduced how to tune LightGBM using OpenBox, and displayed
 
 For more usages of OpenBox (e.g., multiple objectives, constraints, parallel running), please refer to our [documentation](https://open-box.readthedocs.io).
 
-OpenBox is now open source on [Github](https://github.com/thomas-young-2013/open-box). We are actively accepting code contributions to the OpenBox project.
+OpenBox is now open source on [Github](https://github.com/PKU-DAIR/open-box). We are actively accepting code contributions to the OpenBox project.
 

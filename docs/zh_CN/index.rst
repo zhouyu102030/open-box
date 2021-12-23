@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-:github_url: https://github.com/thomas-young-2013/open-box
+:github_url: https://github.com/PKU-DAIR/open-box
 
 ###########################
 OpenBox: 高效通用的黑盒优化系统
@@ -136,9 +136,9 @@ HpBandSter     ×          √      ×          ×       √
 相关文章
 ----------------
 
--  `使用OpenBox对LightGBM进行超参数优化 <https://github.com/thomas-young-2013/open-box/blob/master/docs/zh_CN/articles/openbox_LightGBM.md>`__
+-  `使用OpenBox对LightGBM进行超参数优化 <https://github.com/PKU-DAIR/open-box/blob/master/docs/zh_CN/articles/openbox_LightGBM.md>`__
 
--  `使用OpenBox对XGBoost进行超参数优化 <https://github.com/thomas-young-2013/open-box/blob/master/docs/zh_CN/articles/openbox_XGBoost.md>`__
+-  `使用OpenBox对XGBoost进行超参数优化 <https://github.com/PKU-DAIR/open-box/blob/master/docs/zh_CN/articles/openbox_XGBoost.md>`__
 
 ------------------------------------------------
 
@@ -146,7 +146,7 @@ HpBandSter     ×          √      ×          ×       √
 -------------------------
 
 OpenBox 有着频繁的更新周期。
-如果你在使用过程中遇到了bug，请在Github上告知我们：`如何提交 issue <https://github.com/thomas-young-2013/open-box/issues/new/choose>`__ 。
+如果你在使用过程中遇到了bug，请在Github上告知我们：`如何提交 issue <https://github.com/PKU-DAIR/open-box/issues/new/choose>`__ 。
 
 我们感谢所有的贡献。如果您需要修复任何bug，请直接修复，无需通知我们。
 
@@ -154,7 +154,7 @@ OpenBox 有着频繁的更新周期。
 
 
 
-想要了解更多关于为OpenBox提供贡献的方法，请参考我们的 `如何 contribute <https://github.com/thomas-young-2013/open-box/blob/master/CONTRIBUTING.md>`__ 。
+想要了解更多关于为OpenBox提供贡献的方法，请参考我们的 `如何 contribute <https://github.com/PKU-DAIR/open-box/blob/master/CONTRIBUTING.md>`__ 。
 
 我们再次感谢所有为我们提供宝贵建议的开发者！
 
@@ -184,14 +184,14 @@ Yang Li, Yu Shen, Jiawei Jiang, Jinyang Gao, Ce Zhang, Bin Cui; The Thirty-Fifth
 反馈
 --------
 
--  `提交 issue <https://github.com/thomas-young-2013/open-box/issues>`__
+-  `提交 issue <https://github.com/PKU-DAIR/open-box/issues>`__
 -  Email：liyang.cs@pku.edu.cn 或 shenyu@pku.edu.cn
 
 ------------------------------------------------
 
 许可证
 -------
-OpenBox项目基于 `MIT License <https://github.com/thomas-young-2013/open-box/blob/master/LICENSE>`__
+OpenBox项目基于 `MIT License <https://github.com/PKU-DAIR/open-box/blob/master/LICENSE>`__
 
 ------------------------------------------------
 

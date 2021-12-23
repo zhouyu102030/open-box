@@ -33,6 +33,6 @@ D<sup>𝐾</sup> 和一个当前的任务 D<sup>𝑇</sup>。
 
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/tl_lightgbm_75_rank_result.svg" width="70%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/tl_lightgbm_75_rank_result.svg" width="70%">
 </p>
 

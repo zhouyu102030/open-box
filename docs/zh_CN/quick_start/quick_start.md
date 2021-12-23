@@ -115,7 +115,7 @@ history.plot_convergence(true_minimum=0.397887)
 ```
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/plot_convergence_branin.png" width="60%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_branin.png" width="60%">
 </p>
 
 如果你在用 Jupyter Notebook 环境，调用 <font color=#FF0000>**history.visualize_jupyter()**</font> 来可视化每个测试：

@@ -1,6 +1,6 @@
 # OpenBox：高效通用的黑盒优化系统（一）
 
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/logo.png" width="40%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/logo.png" width="40%">
 
 ## 简介
 
@@ -14,7 +14,7 @@ OpenBox是我们针对黑盒优化设计的一套开源系统，以贝叶斯优�
 
 首先，什么是黑盒优化？黑盒优化是在有限的验证预算内，对黑盒函数 $f : X → \R$ 进行优化。但对于任何输入$x \in X$，验证 $f(x)$ 时，无法得知 $f$ 的其他信息，例如表达式或梯度。当验证代价很昂贵时，应当谨慎选择输入参数，尽快达到全局最优值。
 
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/blackbox.png" style="zoom:30%;" />
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/blackbox.png" style="zoom:30%;" />
 
 上图为一个黑盒函数的示意图，进行黑盒优化的过程中，我们只能通过不断地将数据输入到黑盒函数中，然后利用输出值猜测黑盒函数的结构信息。黑盒函数本身不提供任何有关内部运行的信息。
 
@@ -24,7 +24,7 @@ OpenBox是我们针对黑盒优化设计的一套开源系统，以贝叶斯优�
 
 除了机器学习超参数优化外，黑盒优化在许多领域都有着广泛的应用，如自动化A/B测试、实验设计、数据库参数调优、处理器架构和芯片设计、资源配置优化、自动化化工设计等（如下图）。
 
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/黑盒优化的应用.jpg" style="zoom:30%;" />
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/黑盒优化的应用.jpg" style="zoom:30%;" />
 
 ### 网格搜索与随机搜索
 
@@ -33,7 +33,7 @@ OpenBox是我们针对黑盒优化设计的一套开源系统，以贝叶斯优�
 相对于网格搜索，随机搜索是更有效的方法。随机搜索将在给定的（时间）资源约束内，不断对超参数空间进行采样与验证。在网格搜索的过程中，如果对于优化目标存在不重要的输入参数，当我们固定重要参数，尝试不重要参数的不同取值时，验证结果差异很小，搜索低效，而随机搜索避免了这个问题，能够搜索更多不同重要参数对应的目标值。下图为网格搜索和随机搜索的对比示意。
 
 <center>
-  <img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/grid_random_search2.png" width="500" />
+  <img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/grid_random_search2.png" width="500" />
   <br>
   <div><b>网格搜索 与 随机搜索</b></div>
 </center>
@@ -46,7 +46,7 @@ OpenBox是我们针对黑盒优化设计的一套开源系统，以贝叶斯优�
 + 优化采集函数，得到价值最高的下一个候选点。使用黑盒函数验证该参数配置，并将结果更新到历史观测数据中。
 + 重复以上步骤，直至达到给定资源约束或达到预期效果。
 
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/bayesian_optimization.png" style="zoom:45%" />
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/bayesian_optimization.png" style="zoom:45%" />
 
 上图是一维输入空间下贝叶斯优化的一个例子，从上至下的三张图展示了顺序优化过程。图中黑色的虚线代表真实的黑盒函数。初始情况下，利用两个历史观测数据建模，得到概率代理模型。代理模型对输入参数的预测均值以黑色实线表示，预测方差（即不确定性）以蓝色区域大小表示。常用的代理模型有高斯过程（Gaussian Process）、随机森林（Random Forest）、Tree-structured Parzen Estimator（TPE）等。
 
@@ -65,13 +65,13 @@ OpenBox是解决黑盒优化（超参数优化）问题的高效且通用的开�
 + 规模可扩展：对于输入维度、目标维度、任务数、并行验证数量等有较好的可扩展性。
 + 错误容忍、系统可扩展性、数据隐私保护。
 
-OpenBox使用Python编写，开源项目地址为：<https://github.com/thomas-young-2013/open-box>
+OpenBox使用Python编写，开源项目地址为：<https://github.com/PKU-DAIR/open-box>
 
 ### 广泛的使用场景
 
 相较于现有的黑盒优化（超参数优化）系统，OpenBox支持更广泛的使用场景，包括多目标优化、带约束条件优化、多种参数类型、迁移学习、分布式并行验证、多精度优化等。OpenBox与现有系统的支持场景对比如下图：
 
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/functionality_scope.png" style="zoom:40%;" />
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/functionality_scope.png" style="zoom:40%;" />
 
 + 多种参数类型（FIOC，即浮点型、整型、序数型、类别型）：输入参数不局限于浮点型（实数），例如超参数优化中，SVM模型核函数用类别型表示，如果单纯用整型代替序数型或类别型参数，将对参数附加额外的序关系，不利于模型优化。
 + 多目标优化（Multi-objective Optimization）：同时优化多个不同（甚至相互冲突）的目标，例如同时优化机器模型准确率和模型训练/预测时间。
@@ -106,7 +106,7 @@ OpenBox系统默认使用基于随机森林代理模型（Random Forest Surrogat
 + 本地使用：用户可通过安装Python包，调用黑盒优化（超参数优化）框架与算法。
 + 服务使用：用户可通过接口访问OpenBox服务，从服务端获取推荐的参数配置，在本地执行参数性能验证（如机器学习模型训练与预测）后，将结果更新至服务端。用户可通过访问服务网站页面，可视化监视与管理优化过程。
 
-OpenBox代码已在Github开源，项目地址：<https://github.com/thomas-young-2013/open-box> 。欢迎更多开发者参与我们的开源项目。
+OpenBox代码已在Github开源，项目地址：<https://github.com/PKU-DAIR/open-box> 。欢迎更多开发者参与我们的开源项目。
 
 ### 本地使用教程
 
@@ -166,7 +166,7 @@ history.visualize_jupyter()
 ```
 
 <center class="half">
-  <img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/plot_convergence_branin.png" width="350"/><img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/visualize_jupyter_branin.png" width="250"/>
+  <img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_branin.png" width="350"/><img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/visualize_jupyter_branin.png" width="250"/>
 </center>
 
 #### LightGBM模型超参数优化

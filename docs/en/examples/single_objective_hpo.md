@@ -160,7 +160,7 @@ history.plot_convergence()
 ```
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/plot_convergence_hpo.png" width="60%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_hpo.png" width="60%">
 </p>
 
 If you are using the Jupyter Notebook environment, call history.visualize_jupyter() for visualization of each trial:
@@ -170,7 +170,7 @@ history.visualize_jupyter()
 ```
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/visualize_jupyter_hpo.png" width="90%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/visualize_jupyter_hpo.png" width="90%">
 </p>
 
 Call <font color=#FF0000>**print(history.get_importance())**</font> print the hyperparameter importance:

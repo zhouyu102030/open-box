@@ -118,7 +118,7 @@ history.plot_convergence(true_minimum=0.397887)
 ```
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/plot_convergence_branin.png" width="60%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_branin.png" width="60%">
 </p>
 
 If you are using the Jupyter Notebook environment, call <font color=#FF0000>**history.visualize_jupyter()**</font> for 
@@ -129,7 +129,7 @@ history.visualize_jupyter()
 ```
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/visualize_jupyter_branin.png" width="90%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/visualize_jupyter_branin.png" width="90%">
 </p>
 
 Call <font color=#FF0000>**print(history.get_importance())**</font> to print the parameter importance:

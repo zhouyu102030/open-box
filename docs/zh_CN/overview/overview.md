@@ -34,7 +34,7 @@ OpenBox是一个高效的通用黑盒优化系统。它的设计有如下特点�
 下图展示了OpenBox服务的系统概览。
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/sys_framework.svg" width="90%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/sys_framework.svg" width="90%">
 </p>
 
 
@@ -54,7 +54,7 @@ OpenBox是一个高效的通用黑盒优化系统。它的设计有如下特点�
 ## 部署构件
 
 ### 单独的Python包
-和其它开源包一样，OpenBox也有一个频繁的维护周期。用户可以使用Pypi或者 [GitHub](https://github.com/thomas-young-2013/open-box) 
+和其它开源包一样，OpenBox也有一个频繁的维护周期。用户可以使用Pypi或者 [GitHub](https://github.com/PKU-DAIR/open-box) 
 上的源代码安装OpenBox。
 我们的 [安装指南](../installation/installation_guide.md) 中提供了更多的安装细节。
 
@@ -72,6 +72,6 @@ OpenBox是一个高效的通用黑盒优化系统。它的设计有如下特点�
 
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/ranking_lgb_7.svg" width="80%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/ranking_lgb_7.svg" width="80%">
 </p>
 

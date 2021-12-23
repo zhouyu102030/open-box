@@ -7,7 +7,7 @@ mechanism for distributed parallelization, where multiple configurations can be 
 Two parallel settings are considered:
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/parallel_bo.svg" width="90%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/parallel_bo.svg" width="90%">
 </p>
 
 1) **Synchronous parallel setting (left)**. The worker pulls a new configuration from the suggestion server to evaluate 

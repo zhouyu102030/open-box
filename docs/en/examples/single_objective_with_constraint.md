@@ -112,5 +112,5 @@ history.plot_convergence(true_minimum=-106.7645367)
 ```
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/plot_convergence_mishra.png" width="60%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_mishra.png" width="60%">
 </p>

@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-:github_url: https://github.com/thomas-young-2013/open-box
+:github_url: https://github.com/PKU-DAIR/open-box
 
 ###############################################################
 OpenBox: Generalized and Efficient Blackbox Optimization System
@@ -152,10 +152,10 @@ Related Articles
 ----------------
 
 -  `Tuning LightGBM with
-   OpenBox <https://github.com/thomas-young-2013/open-box/blob/master/docs/en/articles/openbox_LightGBM.md>`__
+   OpenBox <https://github.com/PKU-DAIR/open-box/blob/master/docs/en/articles/openbox_LightGBM.md>`__
 
 -  `Tuning XGBoost using
-   OpenBox <https://github.com/thomas-young-2013/open-box/blob/master/docs/en/articles/openbox_XGBoost.md>`__
+   OpenBox <https://github.com/PKU-DAIR/open-box/blob/master/docs/en/articles/openbox_XGBoost.md>`__
 
 ------------------------------------------------
 
@@ -163,7 +163,7 @@ Releases and Contributing
 -------------------------
 
 OpenBox has a frequent release cycle. Please let us know if you encounter a bug by `filling an
-issue <https://github.com/thomas-young-2013/open-box/issues/new/choose>`__.
+issue <https://github.com/PKU-DAIR/open-box/issues/new/choose>`__.
 
 We appreciate all contributions. If you are planning to contribute any
 bug-fixes, please do so without further discussions.
@@ -172,7 +172,7 @@ If you plan to contribute new features, new modules, etc. please first
 open an issue or reuse an existing issue, and discuss the feature with us.
 
 To learn more about making a contribution to OpenBox, please refer to
-our `how-to-contribute page <https://github.com/thomas-young-2013/open-box/blob/master/CONTRIBUTING.md>`__.
+our `how-to-contribute page <https://github.com/PKU-DAIR/open-box/blob/master/CONTRIBUTING.md>`__.
 
 We appreciate all contributions and thank all the contributors!
 
@@ -205,7 +205,7 @@ Feedback
 --------
 
 -  `File an
-   issue <https://github.com/thomas-young-2013/open-box/issues>`__ on
+   issue <https://github.com/PKU-DAIR/open-box/issues>`__ on
    GitHub.
 
 -  Email us via liyang.cs@pku.edu.cn or shenyu@pku.edu.cn.
@@ -216,7 +216,7 @@ License
 -------
 
 The entire codebase is under `MIT
-license <https://github.com/thomas-young-2013/open-box/blob/master/LICENSE>`__.
+license <https://github.com/PKU-DAIR/open-box/blob/master/LICENSE>`__.
 
 ------------------------------------------------
 

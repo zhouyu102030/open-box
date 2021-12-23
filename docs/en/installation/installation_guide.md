@@ -39,14 +39,14 @@ To install OpenBox using the source code, please run the following commands:
 
 For Python >= 3.7:
 ```bash
-git clone https://github.com/thomas-young-2013/open-box.git && cd open-box
+git clone https://github.com/PKU-DAIR/open-box.git && cd open-box
 cat requirements/main.txt | xargs -n 1 -L 1 pip install
 python setup.py install
 ```
 
 For Python == 3.6:
 ```bash
-git clone https://github.com/thomas-young-2013/open-box.git && cd open-box
+git clone https://github.com/PKU-DAIR/open-box.git && cd open-box
 cat requirements/main_py36.txt | xargs -n 1 -L 1 pip install
 python setup.py install
 ```
@@ -77,7 +77,7 @@ importance from history, please refer to [Pyrfr Installation Guide](./install_py
 
 ## 5 Trouble Shooting
 
-If you encounter problems not listed below, please [File an issue](https://github.com/thomas-young-2013/open-box/issues) 
+If you encounter problems not listed below, please [File an issue](https://github.com/PKU-DAIR/open-box/issues) 
 on GitHub or email us via *liyang.cs@pku.edu.cn*.
 
 ### Windows

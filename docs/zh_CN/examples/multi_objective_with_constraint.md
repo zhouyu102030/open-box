@@ -127,7 +127,7 @@ if pareto_front.shape[-1] in (2, 3):
 ```
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/plot_pareto_front_constr.png" width="60%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_pareto_front_constr.png" width="60%">
 </p>
 
 然后绘制优化过程中与理想pareto front相比的hypervolume差。
@@ -144,5 +144,5 @@ plt.show()
 ```
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/plot_hypervolume_constr.png" width="60%">
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_hypervolume_constr.png" width="60%">
 </p>

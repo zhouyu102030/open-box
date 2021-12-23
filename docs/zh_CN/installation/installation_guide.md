@@ -39,14 +39,14 @@ pip install openbox
 
 对于 Python >= 3.7:
 ```bash
-git clone https://github.com/thomas-young-2013/open-box.git && cd open-box
+git clone https://github.com/PKU-DAIR/open-box.git && cd open-box
 cat requirements/main.txt | xargs -n 1 -L 1 pip install
 python setup.py install
 ```
 
 对于 Python == 3.6:
 ```bash
-git clone https://github.com/thomas-young-2013/open-box.git && cd open-box
+git clone https://github.com/PKU-DAIR/open-box.git && cd open-box
 cat requirements/main_py36.txt | xargs -n 1 -L 1 pip install
 python setup.py install
 ```

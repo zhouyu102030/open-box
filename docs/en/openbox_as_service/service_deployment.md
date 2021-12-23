@@ -20,7 +20,7 @@ Then, clone the source code to the server where you want to deploy OpenBox servi
 The commands are as follows:
 
 ```bash
-git clone https://github.com/thomas-young-2013/open-box.git
+git clone https://github.com/PKU-DAIR/open-box.git
 cd open-box
 python setup.py install
 ```

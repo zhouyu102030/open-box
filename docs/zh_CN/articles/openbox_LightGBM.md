@@ -1,14 +1,14 @@
 # LightGBM调参：使用OpenBox开源黑盒优化系统
 
 <center class="half">
-  <img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/logo.png" width="300"/><img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/tuning/LightGBM_logo_black_text.svg" width="300"/>
+  <img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/logo.png" width="300"/><img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/tuning/LightGBM_logo_black_text.svg" width="300"/>
 </center>
 
 ## 简介
 
 本文将介绍如何使用OpenBox开源黑盒优化系统对LightGBM模型进行超参数优化。
 
-OpenBox是针对黑盒优化设计的一套开源系统（项目地址：<https://github.com/thomas-young-2013/open-box>），以贝叶斯优化为基础，高效求解黑盒优化问题。针对超参数优化——黑盒优化的典型问题，OpenBox展现出了优异的性能，可以在更短的时间内取得更好的模型性能结果。
+OpenBox是针对黑盒优化设计的一套开源系统（项目地址：<https://github.com/PKU-DAIR/open-box>），以贝叶斯优化为基础，高效求解黑盒优化问题。针对超参数优化——黑盒优化的典型问题，OpenBox展现出了优异的性能，可以在更短的时间内取得更好的模型性能结果。
 
 OpenBox使用场景广泛，不仅支持传统的单目标黑盒优化，还支持多目标优化、带约束条件优化、多种参数类型、迁移学习、分布式并行验证、多精度优化等。除了本地安装与优化调用，OpenBox还提供在线优化服务，用户可通过网页可视化监控并管理优化过程，也可以部署私有优化服务。下面我们将介绍如何在本地使用OpenBox系统对LightGBM模型调参。
 
@@ -133,7 +133,7 @@ history.visualize_jupyter()
 ```
 
 <center class="half">
-  <img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/plot_convergence_hpo.png" width="300"/><img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/visualize_jupyter_hpo.png" width="300"/>
+  <img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/plot_convergence_hpo.png" width="300"/><img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/visualize_jupyter_hpo.png" width="300"/>
 </center>
 
 
@@ -165,7 +165,7 @@ print(history.get_importance())
 
 OpenBox系统对于超参数优化问题有着优异的表现，我们实验比对了各超参数优化（黑盒优化）系统性能。下图为各系统在25个数据集上，对LightGBM模型进行超参数优化后的排名：
 
-<img src="https://raw.githubusercontent.com/thomas-young-2013/open-box/master/docs/imgs/ranking_lgb_7.svg" style="zoom:30%;" />
+<img src="https://raw.githubusercontent.com/PKU-DAIR/open-box/master/docs/imgs/ranking_lgb_7.svg" style="zoom:30%;" />
 
 在超参数优化问题上，OpenBox系统性能超过了现有系统。
 
@@ -175,5 +175,5 @@ OpenBox系统对于超参数优化问题有着优异的表现，我们实验比�
 
 如果您有兴趣了解OpenBox的更多使用方法（如多目标、带约束条件场景，并行验证，服务使用等），欢迎阅读我们的教程文档：<https://open-box.readthedocs.io>。
 
-OpenBox项目已在Github开源，项目地址：<https://github.com/thomas-young-2013/open-box> 。欢迎更多开发者参与我们的开源项目。
+OpenBox项目已在Github开源，项目地址：<https://github.com/PKU-DAIR/open-box> 。欢迎更多开发者参与我们的开源项目。
 
