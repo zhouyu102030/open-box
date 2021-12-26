@@ -47,6 +47,7 @@ The design of OpenBox follows the following principles:
 
 ## News
 + OpenBox based solutions achieved the first place of [ACM CIKM 2021 AnalyticCup (Task 2 - HPO)](https://algo.browser.qq.com/).
++ OpenBox team won the top prize (special prize) in the open-source innovation competition at [2021 CCF ChinaSoft](http://chinasoft.ccf.org.cn/papers/chinasoft.html) conference.
 
 ## OpenBox Capabilities in a Glance
 <table>
