@@ -13,6 +13,7 @@ from openbox.utils.multi_objective import Hypervolume, get_pareto_front
 from openbox.utils.config_space.space_utils import get_config_from_dict
 from openbox.utils.visualization.plot_convergence import plot_convergence
 from openbox.core.base import Observation
+from openbox.utils.transform import get_transform_function
 
 Perf = collections.namedtuple(
     'perf', ['cost', 'time', 'status', 'additional_info'])
@@ -126,22 +127,17 @@ class HistoryContainer(object):
             self.incumbent_value = perf
             self.incumbents.append((config, perf))
 
-    def get_transformed_perfs(self):
+    def get_transformed_perfs(self, transform=None):
+        # set perf of failed trials to current max
         transformed_perfs = self.perfs.copy()
         for i in self.transform_perf_index:
             transformed_perfs[i] = self.max_y
+
         transformed_perfs = np.array(transformed_perfs, dtype=np.float64)
+        transformed_perfs = get_transform_function(transform)(transformed_perfs)
         return transformed_perfs
 
-    def get_transformed_constraint_perfs(self, bilog_transform=True):
-        def bilog(y: np.ndarray):
-            """Magnify the difference between y and 0"""
-            idx = (y >= 0)
-            y_copy = y.copy()
-            y_copy[idx] = np.log(1 + y_copy[idx])
-            y_copy[~idx] = -np.log(1 - y_copy[~idx])
-            return y_copy
-
+    def get_transformed_constraint_perfs(self, transform='bilog'):
         if self.num_constraints == 0:
             return None
 
@@ -152,8 +148,7 @@ class HistoryContainer(object):
             transformed_constraint_perfs[i] = max_c
 
         transformed_constraint_perfs = np.array(transformed_constraint_perfs, dtype=np.float64)
-        if bilog_transform:
-            transformed_constraint_perfs = bilog(transformed_constraint_perfs)
+        transformed_constraint_perfs = get_transform_function(transform)(transformed_constraint_perfs)
         return transformed_constraint_perfs
 
     def get_perf(self, config: Configuration):
@@ -319,7 +314,7 @@ class HistoryContainer(object):
             raise ValueError('Please provide config_space to show parameter importance!')
 
         X = _get_X(self.configurations, config_space)
-        Y = np.array(self.get_transformed_perfs())
+        Y = np.array(self.get_transformed_perfs(transform=None))
 
         # create an instance of fanova with data for the random forest and the configSpace
         f = fANOVA(X=X, Y=Y, config_space=config_space)
@@ -354,7 +349,7 @@ class HistoryContainer(object):
             raise ValueError('Please provide config_space to show parameter importance!')
 
         X = np.array([list(config.get_dictionary().values()) for config in self.configurations])
-        Y = np.array(self.get_transformed_perfs())
+        Y = np.array(self.get_transformed_perfs(transform=None))
 
         # Fit a LightGBMRegressor with observations
         lgbr = LGBMRegressor()
@@ -591,11 +586,11 @@ class MultiStartHistoryContainer(object):
     def successful_perfs(self):
         return self.current.successful_perfs
 
-    def get_transformed_perfs(self):
-        return self.current.get_transformed_perfs
+    def get_transformed_perfs(self, *args, **kwargs):
+        return self.current.get_transformed_perfs(*args, **kwargs)
 
-    def get_transformed_constraint_perfs(self):
-        return self.current.get_transformed_constraint_perfs
+    def get_transformed_constraint_perfs(self, *args, **kwargs):
+        return self.current.get_transformed_constraint_perfs(*args, **kwargs)
 
     def get_perf(self, config: Configuration):
         for history_container in self.history_containers:

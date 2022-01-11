@@ -338,8 +338,8 @@ class Advisor(object, metaclass=abc.ABCMeta):
             return self.sample_random_configs(1, history_container)[0]
 
         X = convert_configurations_to_array(history_container.configurations)
-        Y = history_container.get_transformed_perfs()
-        cY = history_container.get_transformed_constraint_perfs()
+        Y = history_container.get_transformed_perfs(transform=None)
+        cY = history_container.get_transformed_constraint_perfs(transform='bilog')
 
         if self.optimization_strategy == 'bo':
             if num_config_successful < max(self.init_num, 1):

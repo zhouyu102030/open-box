@@ -11,7 +11,7 @@ from openbox.core.base import build_surrogate
 from openbox.utils.constants import VERY_SMALL_NUMBER
 from openbox.utils.config_space import ConfigurationSpace
 from openbox.utils.config_space.util import convert_configurations_to_array
-from openbox.utils.normalization import zero_mean_unit_var_normalization, zero_one_normalization
+from openbox.utils.transform import zero_mean_unit_var_normalization, zero_one_normalization
 from openbox.utils.logging_utils import get_logger
 
 

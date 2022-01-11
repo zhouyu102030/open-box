@@ -213,7 +213,7 @@ class TPE_Advisor:
             return
 
         train_configs = convert_configurations_to_array(history_container.configurations)
-        train_losses = history_container.get_transformed_perfs()
+        train_losses = history_container.get_transformed_perfs(transform=None)
 
         n_good = max(self.min_points_in_model, (self.top_n_percent * train_configs.shape[0]) // 100)
         # n_bad = min(max(self.min_points_in_model, ((100-self.top_n_percent)*train_configs.shape[0])//100), 10)

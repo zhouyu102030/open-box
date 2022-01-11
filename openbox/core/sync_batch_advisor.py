@@ -91,14 +91,14 @@ class SyncBatchAdvisor(Advisor):
             return self.sample_random_configs(batch_size, history_container)
 
         X = convert_configurations_to_array(history_container.configurations)
-        Y = history_container.get_transformed_perfs()
-        # cY = history_container.get_transformed_constraint_perfs()
+        Y = history_container.get_transformed_perfs(transform=None)
+        # cY = history_container.get_transformed_constraint_perfs(transform='bilog')
 
         batch_configs_list = list()
 
         if self.batch_strategy == 'median_imputation':
             # set bilog_transform=False to get real cY for estimating median
-            cY = history_container.get_transformed_constraint_perfs(bilog_transform=False)
+            cY = history_container.get_transformed_constraint_perfs(transform=None)
 
             estimated_y = np.median(Y, axis=0).reshape(-1).tolist()
             estimated_c = np.median(cY, axis=0).tolist() if self.num_constraints > 0 else None
