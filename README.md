@@ -272,12 +272,16 @@ Targeting at openness and advancing AutoML ecosystems, we had also released few 
 ## **Related Publications**
 
 **OpenBox: A Generalized Black-box Optimization Service**
-Yang Li, Yu Shen, Wentao Zhang, Yuanwei Chen, Huaijun Jiang, Mingchao Liu, Jiawei Jiang, Jinyang Gao, Wentao Wu, Zhi Yang, Ce Zhang, Bin Cui; ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2021).
+Yang Li, Yu Shen, Wentao Zhang, Yuanwei Chen, Huaijun Jiang, Mingchao Liu, Jiawei Jiang, Jinyang Gao, Wentao Wu, Zhi Yang, Ce Zhang, Bin Cui; ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2021, CCF-A).
 https://arxiv.org/abs/2106.00421
 
 **MFES-HB: Efficient Hyperband with Multi-Fidelity Quality Measurements**
-Yang Li, Yu Shen, Jiawei Jiang, Jinyang Gao, Ce Zhang, Bin Cui; The Thirty-Fifth AAAI Conference on Artificial Intelligence (AAAI 2021).
+Yang Li, Yu Shen, Jiawei Jiang, Jinyang Gao, Ce Zhang, Bin Cui; The Thirty-Fifth AAAI Conference on Artificial Intelligence (AAAI 2021, CCF-A).
 https://arxiv.org/abs/2012.03011
+
+**Hyper-Tune: Towards Efficient Hyper-parameter Tuning at Scale**
+Yang Li, Yu Shen, Huaijun Jiang, Wentao Zhang, Jixiang Li, Ji Liu, Ce Zhang, Bin Cui; The 48th International Conference on Very Large Data Bases (VLDB 2022, CCF-A).
+https://arxiv.org/abs/2201.06834
 
 ## **License**
 
