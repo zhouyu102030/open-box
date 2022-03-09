@@ -63,8 +63,8 @@ class HistoryContainer(object):
             self.perfs.append(objs[0])
         else:
             self.perfs.append(objs)
-        self.trial_states.append(trial_state)
         self.constraint_perfs.append(constraints)  # None if no constraint
+        self.trial_states.append(trial_state)
         self.elapsed_times.append(elapsed_time)
 
         transform_perf = False
@@ -382,36 +382,69 @@ class HistoryContainer(object):
         fn : str
             file name
         """
-        data = [(k.get_dictionary(), float(v)) for k, v in self.data.items()]  # todo: all configs
 
-        with open(fn, "w") as fp:
-            json.dump({"data": data}, fp, indent=2)
+        data = []
+        for idx, (config, perf, constraint_perf, trial_state, elapsed_time) in enumerate(zip(
+            self.configurations, self.perfs, self.constraint_perfs, self.trial_states, self.elapsed_times,
+        )):
+            config_dict = config.get_dictionary()
+            _perf = [float(p) for p in perf] if self.num_objs > 1 else float(perf)
+            _constraint_perf = [float(c) for c in constraint_perf] if self.num_constraints > 0 else constraint_perf
 
-    def load_history_from_json(self, cs: ConfigurationSpace, fn: str = "history_container.json"):  # todo: all configs
-        """Load and runhistory in json representation from disk.
+            data_item = dict(
+                index=idx,
+                config=config_dict,
+                perf=_perf,
+                constraint_perf=_constraint_perf,
+                trial_state=trial_state,
+                elapsed_time=elapsed_time,
+            )
+            data.append(data_item)
+
+        with open(fn, 'w') as fp:
+            json.dump({'data': data}, fp, indent=2)
+        self.logger.info('Save history to %s' % fn)
+
+    def load_history_from_json(self, fn: str = "history_container.json", config_space: ConfigurationSpace = None):
+        """Load history in json representation from disk.
         Parameters
         ----------
         fn : str
             file name to load from
-        cs : ConfigSpace
+        config_space : ConfigSpace
             instance of configuration space
         """
+
+        if config_space is None:
+            config_space = self.config_space
+        if config_space is None:
+            raise ValueError('Please provide config_space to load_history_from_json!')
+
         try:
-            with open(fn) as fp:
+            with open(fn, 'r') as fp:
                 all_data = json.load(fp)
         except Exception as e:
             self.logger.warning(
-                'Encountered exception %s while reading runhistory from %s. '
+                'Encountered exception %s while reading history from %s. '
                 'Not adding any runs!', e, fn,
             )
             return
-        _history_data = collections.OrderedDict()
-        # important to use add method to use all data structure correctly
-        for k, v in all_data["data"]:
-            config = get_config_from_dict(k, cs)
-            perf = float(v)
-            _history_data[config] = perf
-        return _history_data
+
+        for data_item in all_data['data']:
+            config_dict = data_item['config']
+            perf = data_item['perf']
+            constraint_perf = data_item['constraint_perf']
+            trial_state = data_item['trial_state']
+            elapsed_time = data_item['elapsed_time']
+
+            config = get_config_from_dict(config_dict, config_space)
+            objs = perf if self.num_objs > 1 else [perf]
+
+            observation = Observation(
+                config=config, objs=objs, constraints=constraint_perf, trial_state=trial_state, elapsed_time=elapsed_time)
+            self.update_observation(observation)
+
+        self.logger.info('Load history from %s. len = %d.' % (fn, len(all_data['data'])))
 
 
 class MOHistoryContainer(HistoryContainer):
@@ -419,8 +452,8 @@ class MOHistoryContainer(HistoryContainer):
     Multi-Objective History Container
     """
 
-    def __init__(self, task_id, num_objs, num_constraints=0, ref_point=None):
-        super().__init__(task_id=task_id, num_constraints=num_constraints)
+    def __init__(self, task_id, num_objs, num_constraints=0, config_space=None, ref_point=None):
+        super().__init__(task_id=task_id, num_constraints=num_constraints, config_space=config_space)
         self.pareto = collections.OrderedDict()
         self.num_objs = num_objs
         self.mo_incumbent_value = [MAXINT] * self.num_objs
@@ -517,20 +550,22 @@ class MultiStartHistoryContainer(object):
     History container for multistart algorithms.
     """
 
-    def __init__(self, task_id, num_objs=1, num_constraints=0, ref_point=None):
+    def __init__(self, task_id, num_objs=1, num_constraints=0, config_space=None, ref_point=None):
         self.task_id = task_id
         self.num_objs = num_objs
         self.num_constraints = num_constraints
         self.history_containers = []
+        self.config_space = config_space
         self.ref_point = ref_point
         self.current = None
         self.restart()
 
     def restart(self):
         if self.num_objs == 1:
-            self.current = HistoryContainer(self.task_id, self.num_constraints)
+            self.current = HistoryContainer(self.task_id, self.num_constraints, self.config_space)
         else:
-            self.current = MOHistoryContainer(self.task_id, self.num_objs, self.num_constraints, self.ref_point)
+            self.current = MOHistoryContainer(
+                self.task_id, self.num_objs, self.num_constraints, self.config_space, self.ref_point)
         self.history_containers.append(self.current)
 
     def get_configs_for_all_restarts(self):
@@ -641,13 +676,13 @@ class MultiStartHistoryContainer(object):
         """
         self.current.save_json(fn)
 
-    def load_history_from_json(self, cs: ConfigurationSpace, fn: str = "history_container.json"):
-        """Load and runhistory in json representation from disk.
+    def load_history_from_json(self, fn: str = "history_container.json", config_space: ConfigurationSpace = None):
+        """Load history in json representation from disk.
         Parameters
         ----------
         fn : str
             file name to load from
-        cs : ConfigSpace
+        config_space : ConfigSpace
             instance of configuration space
         """
-        self.current.load_history_from_json(cs, fn)
+        self.current.load_history_from_json(fn, config_space)

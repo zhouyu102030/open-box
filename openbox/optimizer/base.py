@@ -8,6 +8,7 @@ from typing import List
 from collections import OrderedDict
 from openbox.utils.util_funcs import check_random_state
 from openbox.utils.logging_utils import setup_logger, get_logger
+from openbox.utils.history_container import HistoryContainer
 
 
 class BOBase(object, metaclass=abc.ABCMeta):
@@ -46,7 +47,7 @@ class BOBase(object, metaclass=abc.ABCMeta):
     def iterate(self):
         raise NotImplementedError()
 
-    def get_history(self):
+    def get_history(self) -> HistoryContainer:
         assert self.config_advisor is not None
         return self.config_advisor.history_container
 

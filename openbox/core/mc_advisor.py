@@ -51,7 +51,8 @@ class MCAdvisor(Advisor):
                          random_state=random_state)
 
         if self.use_trust_region:
-            self.history_container = MultiStartHistoryContainer(task_id, self.num_objs, self.num_constraints, ref_point)
+            self.history_container = MultiStartHistoryContainer(task_id, self.num_objs, self.num_constraints,
+                                                                config_space=self.config_space, ref_point=ref_point)
 
     def algo_auto_selection(self):
         info_str = ''

@@ -70,7 +70,8 @@ class Advisor(object, metaclass=abc.ABCMeta):
         if self.num_objs == 1:
             self.history_container = HistoryContainer(task_id, self.num_constraints, config_space=self.config_space)
         else:  # multi-objectives
-            self.history_container = MOHistoryContainer(task_id, self.num_objs, self.num_constraints, ref_point)
+            self.history_container = MOHistoryContainer(task_id, self.num_objs, self.num_constraints,
+                                                        config_space=self.config_space, ref_point=ref_point)
 
         # initial design
         if initial_configurations is not None and len(initial_configurations) > 0:
@@ -467,15 +468,17 @@ class Advisor(object, metaclass=abc.ABCMeta):
             os.makedirs(dir_path)
         if file_name is None:
             file_name = 'bo_history_%s.json' % self.task_id
-        return self.history_container.save_json(os.path.join(dir_path, file_name))
+        self.history_container.save_json(os.path.join(dir_path, file_name))
 
-    def load_history_from_json(self, fn=None):
+    def load_history_from_json(self, file_name=None):
         """
         Load history from a json file.
         """
-        if fn is None:
-            fn = os.path.join(self.output_dir, 'bo_history', 'bo_history_%s.json' % self.task_id)
-        return self.history_container.load_history_from_json(self.config_space, fn)
+        if file_name is None:
+            file_name = os.path.join(self.output_dir, 'bo_history', 'bo_history_%s.json' % self.task_id)
+        if not os.path.exists(file_name):
+            raise FileNotFoundError('History file not found: %s' % file_name)
+        self.history_container.load_history_from_json(file_name)
 
     def get_suggestions(self):
         raise NotImplementedError
