@@ -10,7 +10,7 @@ from openbox.utils.constants import MAXINT, SUCCESS
 from openbox.utils.config_space import Configuration, ConfigurationSpace
 from openbox.utils.logging_utils import get_logger
 from openbox.utils.multi_objective import Hypervolume, get_pareto_front
-from openbox.utils.config_space.space_utils import get_config_from_dict
+from openbox.utils.config_space.space_utils import get_config_from_dict, get_config_values
 from openbox.utils.visualization.plot_convergence import plot_convergence
 from openbox.core.base import Observation
 from openbox.utils.transform import get_transform_function
@@ -288,12 +288,13 @@ class HistoryContainer(object):
     def get_importance(self, config_space=None, return_list=False):
         def _get_X(configurations, config_space):
             from ConfigSpace import CategoricalHyperparameter, OrdinalHyperparameter, Constant
-            X_from_dict = np.array([list(config.get_dictionary().values()) for config in configurations])
+            X_from_dict = np.array([get_config_values(config, config_space) for config in configurations], dtype=object)
             X_from_array = np.array([config.get_array() for config in configurations])
             discrete_types = (CategoricalHyperparameter, OrdinalHyperparameter, Constant)
             discrete_idx = [isinstance(hp, discrete_types) for hp in config_space.get_hyperparameters()]
             X = X_from_dict.copy()
             X[:, discrete_idx] = X_from_array[:, discrete_idx]
+            X = X.astype(X_from_array.dtype)
             return X
 
         try:
@@ -348,7 +349,7 @@ class HistoryContainer(object):
         if config_space is None:
             raise ValueError('Please provide config_space to show parameter importance!')
 
-        X = np.array([list(config.get_dictionary().values()) for config in self.configurations])
+        X = np.array([get_config_values(config, config_space) for config in self.configurations])
         Y = np.array(self.get_transformed_perfs(transform=None))
 
         # Fit a LightGBMRegressor with observations

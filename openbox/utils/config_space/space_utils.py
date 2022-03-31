@@ -168,6 +168,12 @@ def string2config_space(space_desc: str):
     return cs
 
 
+def get_config_values(config: Configuration, config_space: ConfigurationSpace):
+    # DO NOT USE config.get_dictionary().values()! may get random value order for different configs
+    config_values = [config[key] for key in config_space.get_hyperparameter_names()]
+    return config_values
+
+
 def get_config_from_dict(config_dict: dict, config_space: ConfigurationSpace):
     config = deactivate_inactive_hyperparameters(configuration_space=config_space,
                                                  configuration=config_dict)
