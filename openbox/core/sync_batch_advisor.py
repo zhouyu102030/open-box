@@ -58,7 +58,7 @@ class SyncBatchAdvisor(Advisor):
 
         if self.num_objs > 1 or self.num_constraints > 0:
             # local_penalization only supports single objective with no constraint
-            assert self.batch_strategy in ['default', 'median_imputation', ]
+            assert self.batch_strategy in ['default', 'median_imputation', 'reoptimization']
 
         if self.batch_strategy == 'local_penalization':
             self.acq_type = 'lpei'
