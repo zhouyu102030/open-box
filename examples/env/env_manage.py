@@ -13,10 +13,8 @@ class PylotManager:
     def __init__(self):
         self.exec_command = [
             "docker", "exec", "b34be4a13a5a", "bash", "-c",
-            "PYTHONPATH=~/workspace/pylot/dependencies/CARLA_0.9.10.1/\
-                PythonAPI/carla:~/workspace/pylot/dependencies:\
-            $PYTHONPATH python pylot.py --flagfile=configs/scenarios/\
-                person_avoidance_frenet.conf --simulator_host=172.17.0.1"
+            "PYTHONPATH=~/workspace/pylot/dependencies/CARLA_0.9.10.1/PythonAPI/carla:~/workspace/pylot/dependencies:\
+            $PYTHONPATH python pylot.py --flagfile=configs/scenarios/person_avoidance_frenet.conf --simulator_host=172.17.0.1"
         ]
         self.restart_command = ["docker", "restart", "b34be4a13a5a"]
         self.start_command = ["docker", "start", "b34be4a13a5a"]

@@ -20,6 +20,8 @@ dist
 
 # Log files.
 logs/
+*.txt
+*.log
 
 # TensorboardX files.
 runs/
