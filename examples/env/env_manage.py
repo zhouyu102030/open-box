@@ -1,7 +1,7 @@
 import subprocess
 import os
 import time
-# import redis
+import redis
 import logging
 from time import sleep
 
@@ -51,16 +51,16 @@ class ScenarioManage:
     管理 ScenarioRunner 的类，用于启动和关闭 ScenarioRunner
     """
     def __init__(self):
-        # self.sr_command = [
-        #     "/home/dell/miniconda3/envs/scenario/bin/python",
-        #     "/home/dell/Soft/scenario_runner-0.9.13/scenario_runner.py",
-        #     "--scenario", "FollowLeadingVehicle_1", "--reloadWorld", "--file"
-        # ]
         self.sr_command = [
             "/home/dell/miniconda3/envs/scenario/bin/python",
             "/home/dell/Soft/scenario_runner-0.9.13/scenario_runner.py",
-            "--scenario", "FollowLeadingVehicle_1", "--reloadWorld"
+            "--scenario", "FollowLeadingVehicle_1", "--reloadWorld", "--file"
         ]
+        # self.sr_command = [
+        #     "/home/dell/miniconda3/envs/scenario/bin/python",
+        #     "/home/dell/Soft/scenario_runner-0.9.13/scenario_runner.py",
+        #     "--scenario", "FollowLeadingVehicle_1", "--reloadWorld"
+        # ]
         self.srProcess = None
 
 
@@ -102,7 +102,10 @@ if __name__ == "__main__":
 
                 pylot的启动和关闭方式使用容器内进程管理 而不是粗暴重启容器(已验证不能解决问题)
     """
+    pool = redis.ConnectionPool(host='localhost', port=6379, decode_responses=True)
+    r = redis.Redis(connection_pool=pool)
 
+    # 接收 scenario runner 运行状态的管道
     if not os.path.exists("./tmp_pipe"):
         os.mkfifo("./tmp_pipe")
 
@@ -125,6 +128,9 @@ if __name__ == "__main__":
     if fifo_fd:
         # 结束pylot
         srManager.stop()
+        
+    # 设置 START_EXPERIMENT 为 1 代表一次实验结束
+    r.set('START_EXPERIMENT', 1)
 
     pyManager.stop()
     # carlaManage.stop_carla_server()
