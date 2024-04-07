@@ -76,7 +76,7 @@ class CarlaManage:
         self.carla_state = 0
         self.port = 2000
         self.carla_process = None
-        self.log = "carla_log" + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ".txt"
+        self.log = "logs/carla_log" + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ".txt"
         self.carla_commend = ["bash", "/home/dell/Soft/CARLA_0.9.13/CarlaUE4.sh"]
 
         format = "%(asctime)s - %(message)s"

@@ -18,15 +18,17 @@ from env import carla_manage
 
 # Define Search Space
 space = sp.Space()
-x1 = sp.Real("x1", 0, 10, default_value=1)
-x2 = sp.Real("x2", 0, 10, default_value=1)
+x1 = sp.Real("x1", 0, 1, default_value=0.0)
+x2 = sp.Real("x2", 0, 1, default_value=0.0)
 space.add_variables([x1, x2])
 
 
 def loop_manage(FAULT_PARAMETER_1, FAULT_PARAMETER_2):
     
     while r.get('STOP_EXPERIMENT') == '0':
-        r.set('START_INJECT', 1)
+        # 故障注入时间大于 0 才注入故障
+        if float(FAULT_PARAMETER_1) > 0.0:
+            r.set('START_INJECT', 1)
         time.sleep(float(FAULT_PARAMETER_1))
         r.set('START_INJECT', 0)
         time.sleep(float(FAULT_PARAMETER_2))
@@ -75,14 +77,14 @@ def manage_experiment_time(delay_time):
 def branin(config):
 
     # 每轮实验数据重置
-    # START_INJECT:是否注入故障标识符 START_EXPERIMENT_TIME:实验开始时间 FAULT_PARAMETER：故障参数 START_EXPERIMENT:一次实验结束标志
     r.mset({
         'START_INJECT': 0, 
         'START_EXPERIMENT_TIME': '', 
         'START_INJECT_TIME': '', 
         'FAULT_PARAMETER_1': 0, 
         'FAULT_PARAMETER_2': 0, 
-        'STOP_EXPERIMENT': 0
+        'STOP_EXPERIMENT': 0,
+        'OPTIMISATION_FUNCTION_VALUE': 0
         })
 
     carla_man = carla_manage.CarlaManage()
@@ -100,25 +102,22 @@ def branin(config):
     except:
         print("Error: unable to start thread")
 
-
-    # # 从 manage.py 中返回优化函数结果值
-    # if not os.path.exists("./result_pipe"):
-    #     os.mkfifo("./result_pipe")
-
     # 调用 manage.py
     # 创建子进程,输出内容重定向
-    log = open("manage.txt", 'a')
-    p = subprocess.Popen(shlex.split("python ./env/env_manage.py"), stdout = log, stderr = log, shell=False)
+    log = open("logs/pylot_log" + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ".txt", 'a')
+    p = subprocess.Popen(shlex.split("python ./env/env_manage.py"), stderr = log, shell=False)
     p.wait()
     log.close()
 
     # 关闭carla服务器
     carla_man.stop_carla_server()
     
-    # TODO:返回目标函数值
+    # 返回目标函数值
+    y = int(r.get('OPTIMISATION_FUNCTION_VALUE'))
 
-    y = 1
-    return {'objectives': [y]}
+    print("优化函数值 = ", -y)
+    # 优化目标好像是最小化
+    return {'objectives': [-y]}
     
 
 # Run
@@ -127,23 +126,29 @@ if __name__ == "__main__":
     pool = redis.ConnectionPool(host='localhost', port=6379, decode_responses=True)
     r = redis.Redis(connection_pool=pool)
 
-
-
-    # 数据初始化
-    # START_INJECT:是否注入故障标识符 START_EXPERIMENT_TIME:实验开始时间 FAULT_PARAMETER：故障参数 START_EXPERIMENT:一次实验结束标志
+    """
+    redis 数据含义:
+        START_INJECT:是否注入故障标识符 为 1 时注入故障数据
+        START_EXPERIMENT_TIME:实验开始时间 
+        FAULT_PARAMETER_1:注入故障持续时间
+        FAULT_PARAMETER_2:注入故障间隔时间
+        START_EXPERIMENT:一次实验结束标志
+        OPTIMISATION_FUNCTION_VALUE:优化函数值
+    """
     r.mset({
         'START_INJECT': 0, 
         'START_EXPERIMENT_TIME': '', 
         'START_INJECT_TIME': '', 
         'FAULT_PARAMETER_1': 0, 
         'FAULT_PARAMETER_2': 0, 
-        'STOP_EXPERIMENT': 0
+        'STOP_EXPERIMENT': 0,
+        'OPTIMISATION_FUNCTION_VALUE': 0
         })
 
     opt = Optimizer(
         branin,
         space,
-        max_runs=2,
+        max_runs=50,
         # surrogate_type='gp',
         surrogate_type='auto',
         task_id='quick_start',

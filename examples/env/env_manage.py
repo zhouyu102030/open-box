@@ -3,6 +3,8 @@ import os
 import time
 import redis
 import logging
+import struct
+from datetime import datetime
 from time import sleep
 
 
@@ -19,6 +21,8 @@ class PylotManager:
         self.restart_command = ["docker", "restart", "b34be4a13a5a"]
         self.start_command = ["docker", "start", "b34be4a13a5a"]
         self.stop_command = ["docker", "stop", "b34be4a13a5a"]
+
+        # self.log = open("logs/pylot_log" + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ".txt", 'a')
 
 
     def run(self):
@@ -51,23 +55,23 @@ class ScenarioManage:
     管理 ScenarioRunner 的类，用于启动和关闭 ScenarioRunner
     """
     def __init__(self):
-        self.sr_command = [
-            "/home/dell/miniconda3/envs/scenario/bin/python",
-            "/home/dell/Soft/scenario_runner-0.9.13/scenario_runner.py",
-            "--scenario", "FollowLeadingVehicle_1", "--reloadWorld", "--file"
-        ]
         # self.sr_command = [
         #     "/home/dell/miniconda3/envs/scenario/bin/python",
         #     "/home/dell/Soft/scenario_runner-0.9.13/scenario_runner.py",
-        #     "--scenario", "FollowLeadingVehicle_1", "--reloadWorld"
+        #     "--scenario", "FollowLeadingVehicle_1", "--reloadWorld", "--file"
         # ]
+        self.sr_command = [
+            "/home/dell/miniconda3/envs/scenario/bin/python",
+            "/home/dell/Soft/scenario_runner-0.9.13/scenario_runner.py",
+            "--scenario", "FollowLeadingVehicle_1", "--reloadWorld"
+        ]
         self.srProcess = None
+        self.log = open("logs/scenario_log" + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ".txt", 'a')
 
 
     def run(self):
         try:
-            log = open("scenario.txt", 'a')
-            self.srProcess = subprocess.Popen(self.sr_command, stdout = log, stderr = log, shell=False)
+            self.srProcess = subprocess.Popen(self.sr_command, stdout = self.log, stderr = self.log, shell=False)
         except subprocess.CalledProcessError as e:
             print("SR子进程创建失败:", e)
 
@@ -75,6 +79,7 @@ class ScenarioManage:
     def stop(self):
         sleep(1)
         self.srProcess.communicate()
+        self.log.close()
 
 
 if __name__ == "__main__":
@@ -121,18 +126,22 @@ if __name__ == "__main__":
 
     # 阻塞等待管道写入信息，信息为SR结束即将结束运行的信号
     fifo_fd = os.open("./tmp_pipe", os.O_RDONLY)
-    msg = os.read(fifo_fd, 1024)
+    # 读取字节流，直到有数据可用
+    while True:
+        try:
+            msg_bytes = os.read(fifo_fd, 1)  # 假设布尔值占用 1 个字节
+            break  # 如果读取成功，跳出循环
+        except BlockingIOError:
+            pass  # 如果管道没有数据可读，继续尝试
+    # 解码字节流为布尔值
+    msg = struct.unpack('?', msg_bytes)[0]
     os.close(fifo_fd)
 
     # 接收到SR结束的信号
     if fifo_fd:
         # 结束pylot
         srManager.stop()
-        
-    # 设置 START_EXPERIMENT 为 1 代表一次实验结束
-    r.set('START_EXPERIMENT', 1)
 
     pyManager.stop()
-    # carlaManage.stop_carla_server()
 
-    # ToDo：返回优化结果
+    # TODO：返回优化结果

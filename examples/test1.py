@@ -15,11 +15,13 @@ def display_key_values(keys):
             keys[3], ' = ', r.get(keys[3]),'\n',
             keys[4], ' = ', r.get(keys[4]),'\n',
             keys[5], ' = ', r.get(keys[5]),'\n',
+            keys[6], ' = ', r.get(keys[6]),'\n',
             "-------------------------------"
             )
         sleep(1)
         
 
 if __name__ == "__main__":
-    keys = ['START_INJECT', 'START_EXPERIMENT_TIME', 'START_INJECT_TIME', 'FAULT_PARAMETER_1', 'FAULT_PARAMETER_2', 'STOP_EXPERIMENT']
+    keys = ['START_INJECT', 'START_EXPERIMENT_TIME', 'START_INJECT_TIME', 'FAULT_PARAMETER_1', 
+            'FAULT_PARAMETER_2', 'STOP_EXPERIMENT', 'OPTIMISATION_FUNCTION_VALUE']
     display_key_values(keys)
