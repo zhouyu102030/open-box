@@ -55,18 +55,26 @@ class ScenarioManage:
     管理 ScenarioRunner 的类，用于启动和关闭 ScenarioRunner
     """
     def __init__(self):
+        # 获取环境变量 SCENARIO_RUNNER_ROOT 的值
+        self.scenario_runner_root = os.environ.get('SCENARIO_RUNNER_ROOT')
+        self.srProcess = None
+        self.log = open("logs/scenario_log" + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ".txt", 'a')
         # self.sr_command = [
         #     "/home/dell/miniconda3/envs/scenario/bin/python",
         #     "/home/dell/Soft/scenario_runner-0.9.13/scenario_runner.py",
         #     "--scenario", "FollowLeadingVehicle_1", "--reloadWorld", "--file"
         # ]
+        # python 文件定义的跟车场景
+        # self.sr_command = [
+        #     "/home/dell/miniconda3/envs/scenario/bin/python",
+        #     "/home/dell/Soft/scenario_runner-0.9.13/scenario_runner.py",
+        #     "--scenario", "FollowLeadingVehicle_1", "--reloadWorld"
+        # ]
         self.sr_command = [
             "/home/dell/miniconda3/envs/scenario/bin/python",
             "/home/dell/Soft/scenario_runner-0.9.13/scenario_runner.py",
-            "--scenario", "FollowLeadingVehicle_1", "--reloadWorld"
+            "--openscenario", "/home/dell/Soft/scenario_runner-0.9.13/srunner/examples/FollowLeadingVehicle.xosc"
         ]
-        self.srProcess = None
-        self.log = open("logs/scenario_log" + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + ".txt", 'a')
 
 
     def run(self):
