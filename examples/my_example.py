@@ -24,6 +24,12 @@ space.add_variables([x1, x2])
 
 
 def loop_manage(FAULT_PARAMETER_1, FAULT_PARAMETER_2):
+    """
+    用于根据 FAULT_PARAMETER_1, FAULT_PARAMETER_2 两个参数控制 START_INJECT 
+    故障注入标识符
+    FAULT_PARAMETER_1: 优化参数1
+    FAULT_PARAMETER_2: 优化参数2
+    """
     
     while r.get('STOP_EXPERIMENT') == '0':
         # 故障注入时间大于 0 才注入故障
@@ -37,6 +43,7 @@ def loop_manage(FAULT_PARAMETER_1, FAULT_PARAMETER_2):
 def manage_experiment_time(delay_time):
     """
     用于控制故障注入标识符的线程的回调函数 传入参数为实验开始到故障注入的延迟时间
+    delay_time: 实验开始时第一次故障延时注入时间
     """
     # 开始实验时间
     START_EXPERIMENT_TIME = 0
@@ -148,7 +155,7 @@ if __name__ == "__main__":
     opt = Optimizer(
         branin,
         space,
-        max_runs=50,
+        max_runs=2,
         # surrogate_type='gp',
         surrogate_type='auto',
         task_id='quick_start',
@@ -161,8 +168,6 @@ if __name__ == "__main__":
     print(history)
 
     history.plot_convergence(true_minimum=0.397887)
-
-    # TODO: carla server stop
 
     plt.show()
 
