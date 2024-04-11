@@ -73,7 +73,7 @@ class ScenarioManage:
         self.sr_command = [
             "/home/dell/miniconda3/envs/scenario/bin/python",
             "/home/dell/Soft/scenario_runner-0.9.13/scenario_runner.py",
-            "--openscenario", "/home/dell/Soft/scenario_runner-0.9.13/srunner/examples/FollowLeadingVehicle.xosc"
+            "--openscenario", "/home/dell/Soft/scenario_runner-0.9.13/srunner/examples/FollowLeadingVehicleDontStop.xosc"
         ]
 
 
